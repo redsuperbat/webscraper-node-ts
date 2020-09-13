@@ -1,0 +1,25 @@
+version: "3.1"
+
+services:
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_DATABASE: bolaget
+      MYSQL_ROOT_PASSWORD: gungstol123
+  #    volumes:
+  #      - ./data:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 4202:8080
+
+  scraper:
+    build:
+      context: ./scraper
+    restart: always
+    depends_on:
+      - db
