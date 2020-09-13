@@ -77,6 +77,8 @@ const loop = async () => {
     i = 0;
   }
 
+  console.log("Currently fetching ", categories[currentCategory]);
+
   i++;
   await sleep(1000);
   if (currentCategory < 2) {
