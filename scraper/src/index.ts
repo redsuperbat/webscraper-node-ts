@@ -54,11 +54,8 @@ const addWineToDb = (wine: any) => {
   });
 };
 
-const categories: string[] = ["R%C3%B6tt%20vin", "Vitt%20vin"];
-let currentCategory = 0;
-
 const getWines = () => {
-  const url = `https://www.systembolaget.se/api/productsearch/search/sok-dryck/?subcategory=${categories[currentCategory]}&sortdirection=Ascending&page=${i}`;
+  const url = `https://www.systembolaget.se/api/productsearch/search/sok-dryck/?subcategory=Vitt%20vin&sortfield=Name&sortdirection=Ascending&site=all&fullassortment=1&page=${i}`;
   console.log(url);
 
   return axios.get(url);
@@ -72,16 +69,10 @@ const loop = async () => {
 
   wines.forEach((w) => addWineToDb(w));
 
-  if (!wines.length) {
-    currentCategory++;
-    i = 0;
+  if (wines.length) {
+    loop();
   }
 
   i++;
-  await sleep(5000);
-  if (currentCategory < 2) {
-    loop();
-  }
+  await sleep(3000);
 };
-
-loop();

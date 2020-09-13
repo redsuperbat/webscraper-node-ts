@@ -1,11 +1,11 @@
-CREATE DATABASE IF NOT EXISTS main;
-USE main;
+CREATE DATABASE IF NOT EXISTS bolaget;
+USE bolaget;
 CREATE TABLE IF NOT EXISTS wines (
   id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   product_id INT,
   category VARCHAR(64),
   sub_category VARCHAR(64),
-  image_url VARCHAR(64),
+  image_url VARCHAR(256),
   country VARCHAR(64),
   volume SMALLINT,
   price SMALLINT,
