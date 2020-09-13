@@ -76,3 +76,5 @@ const loop = async () => {
   i++;
   await sleep(3000);
 };
+
+loop();
